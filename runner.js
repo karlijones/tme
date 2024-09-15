@@ -8,7 +8,9 @@ class Runner {
     async collectFiles(targetPath) {
         const files = await fs.promises.readdir(targetPath);
 
-        return files;
+        for (let file of files) {
+            const filepath = path.join(targetPath, file);
+        }
     }
 }
 
