@@ -5,8 +5,10 @@ class Runner {
         this.files = [];
     }
 
-    collectFiles() {
+    async collectFiles(targetPath) {
+        const files = await fs.promises.readdir(targetPath);
 
+        return files;
     }
 }
 
