@@ -18,7 +18,7 @@ class Runner {
             } else if (stats.isDirectory()) {
                 const childFiles = await fs.promises.readdir(filepath);
 
-                files.push(...childFiles);
+                files.push(...childFiles.map(f => path.join(file, f)));
             }
         }
     }
