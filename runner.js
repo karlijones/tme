@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
 
+const forbiddenDirs = ['node_modules'];
 class Runner {
     constructor() {
         this.testFiles = [];
