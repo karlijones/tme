@@ -22,7 +22,14 @@ class Runner {
                     console.log('\t', err.message);
                 }
             };
-            require(file.name);
+
+            try {
+                require(file.name);
+            } catch (err) {
+                console.log('X - Error Loading File', file.name);
+                console.log(err.message);
+            }
+            
         }
     }
 
