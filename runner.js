@@ -11,7 +11,7 @@ class Runner {
 
         for (let file of files) {
             const filepath = path.join(targetPath, file);
-            const stats = await fs.promises.lstat(filePath);
+            const stats = await fs.promises.lstat(filepath);
 
             if (stats.isFile() && file.includes('.test.js')) {
                 this.testFiles.push({ name: filepath });
