@@ -9,6 +9,7 @@ class Runner {
 
     async runTests() {
         for (let file of this.testFiles) {
+            console.log(chalk.gray(`---- ${file.name}`));
             const beforeEaches = [];
             global.beforeEach = (fn) => {
                 beforeEaches.push(fn);
@@ -17,17 +18,17 @@ class Runner {
                 beforeEaches.forEach(func => func());
                 try {
                     fn();
-                    console.log(`OK - ${desc}`);
+                    console.log(chalk.green(`OK - ${desc}`));
                 } catch (err) {
-                    console.log(`X - ${desc}`);
-                    console.log('\t', err.message);
+                    console.log(chalk.red(`X - ${desc}`));
+                    console.log(chalk.red('\t', err.message));
                 }
             };
 
             try {
                 require(file.name);
             } catch (err) {
-                console.log(err.message);
+                console.log(chalk.red(err));
             }
             
         }
