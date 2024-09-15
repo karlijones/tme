@@ -3,7 +3,7 @@ const path = require('path');
 
 class Runner {
     constructor() {
-        this.files = [];
+        this.testFiles = [];
     }
 
     async collectFiles(targetPath) {
@@ -12,6 +12,12 @@ class Runner {
         for (let file of files) {
             const filepath = path.join(targetPath, file);
             const stats = await fs.promises.lstat(filePath);
+
+            if (stats.isFile() && file.includes('.test.js')) {
+
+            } else if (stats.isDirectory()) {
+
+            }
         }
     }
 }
